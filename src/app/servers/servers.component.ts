@@ -33,10 +33,16 @@ import { Component, OnInit } from '@angular/core';
 
   styleUrls: ['./servers.component.css']
 })
+
+
 export class ServersComponent implements OnInit {
   allowNewServer = false;
+  serverCreationStatus = 'No server was created!';
+  serverName = '';
 
   constructor() {
+
+    // 2sec wait
     setTimeout(() => {
       this.allowNewServer = true;
     }, 2000);
@@ -45,4 +51,13 @@ export class ServersComponent implements OnInit {
   ngOnInit() {
   }
 
+  // event binding
+  onCreateServer() {
+    this.serverCreationStatus = 'server was created!';
+  }
+
+  onUpdateServerName(event: Event) {
+    console.log(event);
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
 }
