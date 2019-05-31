@@ -25,7 +25,12 @@ en string interpolation: -->
 <!-- <p> {{ serverCreationStatus }}</p> -->
 
 <!-- ngif - condition -> -->
-<p *ngIf="serverCreated">server was created. Server name is {{serverName}}</p>
+<p *ngIf="serverCreated; else noServer">Server was created. Server name is {{serverName}}</p>
+<ng-template #noServer>
+  <p>
+    No server was created.
+  </p>
+</ng-template>
 
 <!-- en property binding: -->
 <!-- <p [innerText]="allowNewServer"></p> -->
